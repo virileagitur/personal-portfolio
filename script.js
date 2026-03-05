@@ -155,3 +155,20 @@ document.querySelectorAll('img').forEach(img => {
 })
 
 
+const readMoreBtn = document.querySelector(".read-more-btn");
+const aboutMore = document.querySelector(".about-more");
+
+readMoreBtn.addEventListener("click", () => {
+
+  aboutMore.classList.toggle("active");
+
+  if(aboutMore.classList.contains("active")){
+    readMoreBtn.textContent = "Read Less";
+  } else{
+    readMoreBtn.textContent = "Read More";
+  }
+
+});
+
+
+

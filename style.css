@@ -661,6 +661,28 @@ footer {
   text-align: justify; /* Newspaper justification */
   hyphens: auto; /* Prevents gaps on mobile */
   margin-bottom: 25px;
+
+}
+
+/* Lists inside article text */
+.newspaper-text-block ul,
+.newspaper-text-block ol {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #222;
+  margin: 0 0 25px 20px;
+  padding: 0;
+  text-align: justify;
+}
+
+.newspaper-text-block li {
+  margin-bottom: 6px;
+}
+
+/* subtle editorial bullet style */
+.newspaper-text-block li::marker {
+  color: #888;
 }
 
 /* Drop Cap for first letter */
@@ -725,6 +747,8 @@ footer {
     padding: 120px 20px 80px 20px;
   }
 
+  
+
   .inner-hero h1 {
     font-size: 32px;
   }
@@ -733,6 +757,11 @@ footer {
     font-size: 16px;
     text-align: left; /* Justify can look bad on very small screens, left align is safer */
     hyphens: auto;
+  }
+
+    .newspaper-text-block ul,
+  .newspaper-text-block ol {
+    font-size: 16px;
   }
   
   /* Optional: Keep justify on mobile if you prefer, just remove text-align: left above */
@@ -799,4 +828,202 @@ margin-bottom:10px;
 .comparison-block ul{
 padding-left:20px;
 line-height:1.8;
+}
+
+
+#about{
+  position: relative;
+}
+
+.about-more{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease;
+}
+
+.about-more.active{
+  max-height:500px;
+}
+
+.read-more-btn{
+  display:block;
+  margin-left:auto; /* pushes button to the right */
+  margin-top:15px;
+  background:none;
+  border:none;
+  font-family:inherit;
+  font-size:14px;
+  cursor:pointer;
+  color:inherit;
+  opacity:0.7;
+  transition:opacity 0.3s ease;
+}
+
+.read-more-btn:hover{
+  opacity:1;
+}
+
+.about-text{
+  max-width:700px;
+}
+
+.about-more{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease;
+}
+
+.about-more.active{
+  max-height:500px;
+}
+
+.read-more-btn{
+  background:none;
+  border:none;
+  font-family:inherit;
+  font-size:14px;
+  cursor:pointer;
+  margin-top:6px;
+  padding:0;
+  color:inherit;
+  opacity:0.7;
+}
+
+.read-more-btn:hover{
+  opacity:1;
+
+
+
+  /* ===============================
+   AWWARDS STYLE TYPOGRAPHY
+================================ */
+
+body{
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color:#111;
+  background:#f5f5f0;
+  line-height:1.75;
+  letter-spacing:-0.01em;
+}
+
+/* Hero title */
+
+.inner-hero h1{
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.8rem,4vw,3.8rem);
+  font-weight:600;
+  letter-spacing:-0.02em;
+}
+
+/* Subtitle */
+
+.inner-subtitle{
+  font-family:'Lora', serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:#666;
+}
+
+/* Journal title */
+
+.newspaper-text-block h2{
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-size:1.3rem;
+  margin-bottom:20px;
+  letter-spacing:-0.01em;
+}
+
+/* Paragraph text */
+
+.newspaper-text-block p{
+  font-family:'Lora', serif;
+  font-size:1.05rem;
+  max-width:720px;
+  margin-bottom:20px;
+}
+
+/* Links */
+
+a{
+  color:#111;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+a:hover{
+  border-bottom:1px solid #111;
+}
+
+/* Blog recommendation */
+
+section ul{
+  list-style:none;
+  padding:0;
+}
+
+section li{
+  margin-bottom:12px;
+  font-family:'Plus Jakarta Sans', sans-serif;
+}
+
+/* Images */
+
+img{
+  border-radius:6px;
+}
+
+/* Footer */
+
+footer{
+  font-family:'Inter', sans-serif;
+  font-size:0.9rem;
+  color:#666;
+}
+}
+
+.related-articles{
+margin-top:80px;
+border-top:1px solid #e5e5e5;
+padding-top:40px;
+}
+
+.related-articles h2{
+font-family:"Plus Jakarta Sans", sans-serif;
+font-size:22px;
+margin-bottom:25px;
+}
+
+.related-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+}
+
+.related-card{
+text-decoration:none;
+color:inherit;
+padding:20px;
+border:1px solid #e5e5e5;
+border-radius:8px;
+transition:all .25s ease;
+background:#fff;
+}
+
+.related-card:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.related-card h3{
+font-size:18px;
+margin-bottom:10px;
+font-family:"Plus Jakarta Sans", sans-serif;
+}
+
+.related-card p{
+font-size:14px;
+color:#666;
+line-height:1.6;
 }

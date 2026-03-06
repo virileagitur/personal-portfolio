@@ -1091,3 +1091,197 @@ line-height:1.6;
   justify-self: end;
 }
 
+
+
+/* ===================================================== */
+/* GLOBAL SMOOTH UI SYSTEM */
+/* ===================================================== */
+
+:root{
+  --smooth-fast:0.25s;
+  --smooth-normal:0.35s;
+  --smooth-slow:0.55s;
+  --ease-smooth:cubic-bezier(0.22,1,0.36,1);
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+*{
+  backface-visibility:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===================================================== */
+/* UNIVERSAL TRANSITIONS */
+/* ===================================================== */
+
+a,
+button,
+.project-card,
+.socials a,
+.nav-links a{
+  transition:
+  transform var(--smooth-fast) var(--ease-smooth),
+  opacity var(--smooth-fast) var(--ease-smooth),
+  color var(--smooth-fast) var(--ease-smooth),
+  background var(--smooth-fast) var(--ease-smooth),
+  box-shadow var(--smooth-fast) var(--ease-smooth);
+}
+
+/* ===================================================== */
+/* PROJECT CARD SMOOTH HOVER */
+/* ===================================================== */
+
+.project-card{
+  transform:translateY(0);
+  will-change:transform;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+}
+
+/* ===================================================== */
+/* IMAGE PERFORMANCE */
+/* ===================================================== */
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+  transform:translateZ(0);
+}
+
+/* ===================================================== */
+/* SMOOTH BUTTON INTERACTION */
+/* ===================================================== */
+
+button{
+  cursor:pointer;
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+button:active{
+  transform:translateY(0);
+}
+
+/* ===================================================== */
+/* FADE UP ANIMATION */
+/* ===================================================== */
+
+.fade-up{
+  opacity:0;
+  transform:translateY(30px);
+  transition:
+  opacity var(--smooth-slow) var(--ease-smooth),
+  transform var(--smooth-slow) var(--ease-smooth);
+}
+
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===================================================== */
+/* STAGGERED CARD ANIMATION */
+/* ===================================================== */
+
+.projects-grid .project-card{
+  opacity:0;
+  transform:translateY(30px);
+}
+
+.projects-grid.show .project-card{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.projects-grid.show .project-card:nth-child(1){transition-delay:0.05s;}
+.projects-grid.show .project-card:nth-child(2){transition-delay:0.1s;}
+.projects-grid.show .project-card:nth-child(3){transition-delay:0.15s;}
+.projects-grid.show .project-card:nth-child(4){transition-delay:0.2s;}
+.projects-grid.show .project-card:nth-child(5){transition-delay:0.25s;}
+.projects-grid.show .project-card:nth-child(6){transition-delay:0.3s;}
+.projects-grid.show .project-card:nth-child(7){transition-delay:0.35s;}
+.projects-grid.show .project-card:nth-child(8){transition-delay:0.4s;}
+
+/* ===================================================== */
+/* SEE MORE BUTTON */
+/* ===================================================== */
+
+.toggle-posts{
+  display:block;
+  margin-left:auto;
+  margin-top:25px;
+
+  background:none;
+  border:none;
+
+  font-size:14px;
+  font-family:'Inter',sans-serif;
+
+  opacity:0.8;
+
+  transition:
+  opacity var(--smooth-fast) var(--ease-smooth),
+  transform var(--smooth-fast) var(--ease-smooth);
+}
+
+.toggle-posts:hover{
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+/* ===================================================== */
+/* MAGNETIC BUTTON EFFECT */
+/* ===================================================== */
+
+button,
+.toggle-posts,
+.view-work{
+  position:relative;
+  transition:transform var(--smooth-fast) var(--ease-smooth);
+}
+
+button:hover,
+.toggle-posts:hover,
+.view-work:hover{
+  transform:translateY(-2px) scale(1.02);
+}
+
+/* ===================================================== */
+/* SILKY SCROLL PROGRESS BAR */
+/* ===================================================== */
+
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+
+  height:3px;
+  width:0%;
+
+  background:#111;
+
+  z-index:9999;
+
+  transition:width 0.15s linear;
+}
+
+/* ===================================================== */
+/* PERFORMANCE IMPROVEMENTS */
+/* ===================================================== */
+
+section{
+  transform:translateZ(0);
+}
+
+.projects-grid{
+  transform:translateZ(0);
+}
+

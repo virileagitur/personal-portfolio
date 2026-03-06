@@ -259,3 +259,22 @@ document.querySelectorAll(".toggle-posts").forEach(button => {
   });
 
 });
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const grids=document.querySelectorAll(".projects-grid");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{
+threshold:0.15
+});
+
+grids.forEach(grid=>observer.observe(grid));
+
+});

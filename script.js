@@ -172,3 +172,90 @@ readMoreBtn.addEventListener("click", () => {
 
 
 
+document.querySelectorAll(".load-more").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const gridId = button.getAttribute("data-target");
+    const grid = document.getElementById(gridId);
+
+    const hiddenCards = grid.querySelectorAll(".project-card:nth-child(n+7)");
+
+    hiddenCards.forEach(card => {
+      card.style.display = "block";
+    });
+
+    button.style.display = "none";
+
+  });
+
+});
+
+
+
+// ============================================
+// Expand / Collapse Posts
+// ============================================
+
+document.querySelectorAll(".toggle-posts").forEach(button => {
+
+  const grid = document.getElementById(button.dataset.target);
+  const cards = grid.querySelectorAll(".project-card");
+
+  let limit = 6;
+
+  if(grid.id === "certificates-grid"){
+    limit = 3;
+  }
+
+  if(grid.id === "blog-grid"){
+    limit = 6;
+  }
+
+  // Hide cards beyond limit
+  cards.forEach((card, index) => {
+    if(index >= limit){
+      card.style.display = "none";
+    }
+  });
+
+  // Hide button if not needed
+  if(cards.length <= limit){
+    button.style.display = "none";
+    return;
+  }
+
+  button.addEventListener("click", () => {
+
+    if(grid.classList.contains("expanded")){
+
+      grid.classList.remove("expanded");
+
+      cards.forEach((card, index) => {
+        if(index >= limit){
+          card.style.display = "none";
+        }
+      });
+
+      button.textContent = "See More ↓";
+
+      grid.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    }else{
+
+      grid.classList.add("expanded");
+
+      cards.forEach(card => {
+        card.style.display = "block";
+      });
+
+      button.textContent = "Close ↑";
+
+    }
+
+  });
+
+});

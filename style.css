@@ -1027,3 +1027,67 @@ font-size:14px;
 color:#666;
 line-height:1.6;
 }
+
+
+
+/* ============================= */
+/* Expand / Collapse Button */
+/* ============================= */
+
+.toggle-posts{
+  display: block;
+  margin-left: auto;          /* pushes button to right */
+  margin-top: 25px;
+
+  background: none;
+  border: none;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  color: #111;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.toggle-posts:hover{
+  opacity: 0.6;
+  transform: translateY(-1px);
+}
+
+/* Click effect */
+.toggle-posts:active{
+  transform: translateY(0);
+  opacity: 0.4;
+}
+
+/* Optional subtle divider above button */
+.toggle-posts::before{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 10px;
+}
+
+/* See More Button */
+.toggle-posts{
+  margin-top: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  background: transparent;
+  cursor: pointer;
+  transition: 1s;
+}
+
+/* Force button to right inside grid */
+.projects-grid .toggle-posts{
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+

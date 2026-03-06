@@ -1,42 +1,36 @@
 async function loadRandomArticle() {
   const container = document.getElementById("random-article");
   
+  if (!container) return;
+
   try {
-    // Fetch the main blog page
-    const response = await fetch("/blog/");
+    const response = await fetch("/blog-data.json");
+    const articles = await response.json();
     
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const html = await response.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    // Select all blog cards from the fetched page
-    const articles = Array.from(doc.querySelectorAll(".blog-card"));
-
     if (articles.length === 0) {
-      container.innerHTML = "<p>No other articles available at the moment.</p>";
+      container.innerHTML = "<p>No articles available.</p>";
       return;
     }
 
-    // Pick a random article
     const randomIndex = Math.floor(Math.random() * articles.length);
-    const randomArticle = articles[randomIndex];
+    const article = articles[randomIndex];
 
-    // Inject the HTML
-    container.innerHTML = ""; // Clear loading text
-    container.appendChild(randomArticle);
+    container.innerHTML = `
+      <a href="${article.url}" class="blog-card">
+        <img src="${article.image}" alt="${article.title}" class="blog-card-image">
+        <div class="blog-card-content">
+          <span class="blog-card-meta">${article.category}</span>
+          <h3 class="blog-card-title">${article.title}</h3>
+          <p class="blog-card-excerpt">${article.excerpt}</p>
+          <span class="read-more-link">Read More →</span>
+        </div>
+      </a>
+    `;
 
   } catch (error) {
-    console.error("Error loading related articles:", error);
-    container.innerHTML = "<p>Unable to load suggestions right now.</p>";
+    console.error("Error:", error);
+    container.innerHTML = "<p>Unable to load suggestions.</p>";
   }
 }
 
-// Run the function when the script loads
-loadRandomArticle();
-
-
-
+document.addEventListener('DOMContentLoaded', loadRandomArticle);

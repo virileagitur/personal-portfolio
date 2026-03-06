@@ -1,9 +1,9 @@
-/* Container for the related articles section */
+/* --- Container for the related articles section --- */
 .related-articles {
   margin-top: 4rem;
   padding: 3rem 0;
   border-top: 1px solid #e5e5e5;
-  background-color: #f9f9f9; /* Optional: subtle background */
+  background-color: #f9f9f9;
 }
 
 .related-articles h2 {
@@ -11,16 +11,37 @@
   font-size: 1.8rem;
   margin-bottom: 2rem;
   color: #1a1a1a;
+  text-align: center; /* Centered title for better balance */
 }
 
-/* Grid layout for multiple articles (if you decide to show more than 1) */
+/* --- Grid layout --- */
 .related-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Styling for the individual card injected by JS */
+/* --- Reset & Scope for Injected Content --- */
+/* This ensures the card doesn't inherit styles from the main article text */
+.related-articles .blog-card {
+  /* Reset typography */
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  display: block; /* Ensure it behaves as a block element */
+}
+
+/* --- Card Styling --- */
 .blog-card {
   background: #fff;
   border: 1px solid #e0e0e0;
@@ -30,20 +51,22 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  text-decoration: none; /* If the card is wrapped in an <a> */
+  text-decoration: none;
   color: inherit;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: #d0d0d0;
 }
 
 .blog-card-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background-color: #ddd; /* Placeholder color */
+  background-color: #ddd;
+  display: block;
 }
 
 .blog-card-content {
@@ -88,4 +111,9 @@
   align-self: flex-start;
   border-bottom: 1px solid #000;
   padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.read-more-link:hover {
+  opacity: 0.7;
 }
